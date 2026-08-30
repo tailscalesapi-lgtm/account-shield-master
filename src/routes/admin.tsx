@@ -105,15 +105,27 @@ function AdminPage() {
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
+  const [mode, setMode] = useState<"sign-in" | "sign-up">("sign-in");
+
   async function handleSignIn(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
-      password,
-    });
+    if (mode === "sign-up") {
+      const { error } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: { emailRedirectTo: window.location.origin },
+      });
+      if (error) toast.error(error.message);
+      else toast.success("Account created. Check your email to confirm, then sign in.");
+    } else {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password,
+      });
+      if (error) toast.error(error.message);
+    }
     setBusy(false);
-    if (error) toast.error(error.message);
   }
 
   async function handleDownloadUpload(filePath: string) {
