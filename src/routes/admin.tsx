@@ -213,11 +213,20 @@ function AdminPage() {
           />
           <button type="submit" disabled={busy} className="btn-primary mt-5 w-full justify-center disabled:opacity-60">
             {busy ? <Loader2 className="size-4 animate-spin" /> : <ShieldCheck className="size-4" />}
-            Sign in
+            {mode === "sign-in" ? "Sign in" : "Create account"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode(mode === "sign-in" ? "sign-up" : "sign-in")}
+            className="mt-4 block w-full text-center text-xs text-muted-foreground hover:text-foreground"
+          >
+            {mode === "sign-in"
+              ? "First time? Create an admin account"
+              : "Already have an account? Sign in"}
           </button>
           <Link
             to="/"
-            className="mt-4 block text-center text-xs text-muted-foreground hover:text-foreground"
+            className="mt-2 block text-center text-xs text-muted-foreground hover:text-foreground"
           >
             Back to site
           </Link>
