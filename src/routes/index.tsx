@@ -103,9 +103,9 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a href="#start" className="btn-primary hidden sm:inline-flex">
+        <Link to="/recover" className="btn-primary hidden sm:inline-flex">
           Start Recovery
-        </a>
+        </Link>
       </div>
     </header>
   );
@@ -190,10 +190,10 @@ function Index() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#start" className="btn-primary">
+              <Link to="/recover" className="btn-primary">
                 <Lock className="size-4" />
                 Initiate Recovery
-              </a>
+              </Link>
               <a href="#protocols" className="btn-outline">
                 Security Methodology
               </a>
@@ -229,9 +229,9 @@ function Index() {
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PROTOCOLS.map((protocol) => (
-            <a
+            <Link
               key={protocol.title}
-              href="#start"
+              to="/recover"
               className="group rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg"
             >
               <div className="flex items-start justify-between">
@@ -246,7 +246,7 @@ function Index() {
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                 {protocol.desc}
               </p>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -261,10 +261,10 @@ function Index() {
             Upload a locked file and let the recovery pipeline do the rest.
             Files are processed in memory and never stored.
           </p>
-          <a href="#start" className="btn-primary mt-8">
+          <Link to="/recover" className="btn-primary mt-8">
             <Lock className="size-4" />
             Start Recovery
-          </a>
+          </Link>
         </div>
       </section>
 
